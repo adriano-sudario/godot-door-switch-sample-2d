@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://1m1qxbfbflh6"]
+
+[ext_resource type="Texture2D" uid="uid://cegvg3urivqc2" path="res://assets/images/switch.png" id="1_sdrjm"]
+[ext_resource type="Script" path="res://entities/interactable/lever_switch/lever_switch.gd" id="1_yke2b"]
+[ext_resource type="Script" path="res://entities/interactable/interactable_component.gd" id="2_r4mkd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epu5c"]
+size = Vector2(12, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_387mb"]
+radius = 17.0074
+
+[node name="LeverSwitch" type="StaticBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_yke2b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sdrjm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_epu5c")
+
+[node name="InteractableComponent" type="Node2D" parent="." node_paths=PackedStringArray("outline_node")]
+script = ExtResource("2_r4mkd")
+interaction_action = "interact"
+outline_node = NodePath("../Sprite2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_387mb")
+
+[connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]

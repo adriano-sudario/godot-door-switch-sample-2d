@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://xjdwqp4f1ra4"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_iuqhk"]
+[ext_resource type="Texture2D" uid="uid://bx30gfww18jrn" path="res://assets/images/Free Chicken Sprites.png" id="1_rpgiy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhual"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsx1q"]
+atlas = ExtResource("1_rpgiy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3tay"]
+atlas = ExtResource("1_rpgiy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3o4y"]
+atlas = ExtResource("1_rpgiy")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2llvq"]
+atlas = ExtResource("1_rpgiy")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ouum"]
+atlas = ExtResource("1_rpgiy")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpunc"]
+atlas = ExtResource("1_rpgiy")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbqig"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsx1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3tay")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3o4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2llvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ouum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpunc")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqwf1"]
+size = Vector2(11, 12)
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+scale = Vector2(3, 3)
+script = ExtResource("1_iuqhk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_hhual")
+sprite_frames = SubResource("SpriteFrames_cbqig")
+animation = &"move"
+frame_progress = 0.294793
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_aqwf1")

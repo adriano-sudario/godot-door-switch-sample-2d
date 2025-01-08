@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfxfxq2end54h"]
+
+[ext_resource type="Texture2D" uid="uid://kp6jtwqvwq6a" path="res://assets/images/Doors.png" id="1_r2sm7"]
+[ext_resource type="Script" path="res://entities/door/door.gd" id="1_x3f14"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f5j1"]
+atlas = ExtResource("1_r2sm7")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi55o"]
+atlas = ExtResource("1_r2sm7")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e12p0"]
+atlas = ExtResource("1_r2sm7")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgdt5"]
+atlas = ExtResource("1_r2sm7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u08ol"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f5j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pi55o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e12p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgdt5")
+}],
+"loop": false,
+"name": &"open_close",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgfmc"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7iki"]
+size = Vector2(2, 3.4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a24jd"]
+size = Vector2(2, 3.4)
+
+[node name="Door" type="StaticBody2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_x3f14")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u08ol")
+animation = &"open_close"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lgfmc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-7, 6.3)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_k7iki")
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(7, 6.3)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_a24jd")

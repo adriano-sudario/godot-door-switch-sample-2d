@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw1ky7ubwv5f"]
+
+[ext_resource type="PackedScene" uid="uid://xjdwqp4f1ra4" path="res://entities/player/player.tscn" id="1_v4g4k"]
+[ext_resource type="PackedScene" uid="uid://1m1qxbfbflh6" path="res://entities/interactable/lever_switch/lever_switch.tscn" id="2_8f77u"]
+[ext_resource type="PackedScene" uid="uid://bfxfxq2end54h" path="res://entities/door/door.tscn" id="3_audco"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_v4g4k")]
+position = Vector2(525, 471)
+
+[node name="LeverSwitch" parent="." node_paths=PackedStringArray("trigger_door") instance=ExtResource("2_8f77u")]
+position = Vector2(521, 375)
+trigger_door = NodePath("../Door")
+
+[node name="Door" parent="." instance=ExtResource("3_audco")]
+position = Vector2(517, 177)
+is_closed_on_ready = false
