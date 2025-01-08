@@ -60,14 +60,11 @@ animation = &"open_close"
 shape = SubResource("RectangleShape2D_lgfmc")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="CollisionShapeLeft" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-7, 6.3)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_k7iki")
 
 [node name="CollisionShapeRight" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(7, 6.3)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_a24jd")

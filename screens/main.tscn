@@ -15,4 +15,3 @@ trigger_door = NodePath("../Door")
 
 [node name="Door" parent="." instance=ExtResource("3_audco")]
 position = Vector2(517, 177)
-is_closed_on_ready = false
